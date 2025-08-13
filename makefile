@@ -37,11 +37,11 @@ out/diction.htm:
 
 out/infodp5.htm:
 	@mkdir -p out
-	echo -e 'dicapl="700"\nid="$(TARGET)"\nhistory="OFF"\nkjump="OFF"' > $@
+	printf 'dicapl="700"\nid="$(TARGET)"\nhistory="OFF"\nkjump="OFF"\n\n#switch;' > $@
 
 out/infogt5.htm:
 	@mkdir -p out
-	echo -e 'more_srch="OFF"\nnarrow_srch="OFF"\norder_srch="OFF"\ncenter="OFF"\ntts_lang="of"\naddin="ON,$(TARGET).d01"\njp_lang="of"\npic_prev="OFF"\nlist_idec="OFF"' > $@
+	printf 'more_srch="OFF"\nnarrow_srch="OFF"\norder_srch="OFF"\ncenter="OFF"\ntts_lang="of"\naddin="ON,$(TARGET).d01"\njp_lang="of"\npic_prev="OFF"\nlist_idec="OFF"' > $@
 
 out/fileinfo.cji:
 	@mkdir -p out
