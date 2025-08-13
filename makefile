@@ -50,8 +50,9 @@ out/fileinfo.cji:
 
 #switch;
 out/baybay-o-and-elf:
-	rm out/$(OBJECTS).elf
-	rm out/*.o
+	rm -f out/$(TARGET).elf
+	rm -f out/*.o
+
 
 # elf生成
 out/$(TARGET).elf: $(OBJECTS)
