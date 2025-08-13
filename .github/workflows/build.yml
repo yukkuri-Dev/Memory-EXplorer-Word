@@ -49,4 +49,16 @@ jobs:
           export PATH=/home/runner/work/EXtend-Word/EXtend-Word/devkitPro/tools/bin:$PATH
           export PATH=/home/runner/work/EXtend-Word/EXtend-Word/devkitPro/devkitSH4/bin:$PATH
           make 
+      - name: Upload to Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            out/**/*.img
+            out/**/*.zip
+          name: Unofficial Build // ${{ env.BUILD_DATE }}
+          tag_name: ${{ github.run_id }}
+          body: |
+              ## Build - Unofficial
+          Commit: Most recent [commit](${{ env.COMMIT_ID }}) during building.
+
 
