@@ -30,6 +30,20 @@ all: $(APPMOD)
 # d01生成
 out/$(TARGET).d01: out/$(TARGET).elf
 
+diction.htm:
+	echo '<html><head><title>$(TARGET)</title><meta name="soft" content="OFF"></head><body></body></html>' > diction.htm
+infodp5.htm:	
+	echo -e 'dicapl="700"\nid="$(TARGET)"\nhistory="OFF"\nkjump="OFF"' > infodp5.htm
+infogt5.htm:
+	echo -e 'more_srch="OFF"\nnarrow_srch="OFF"\norder_srch="OFF"\ncenter="OFF"\ntts_lang="of"\naddin="ON,$(TARGET).d01"\njp_lang="of"\npic_prev="OFF"\nlist_idec="OFF"
+' > infogt5.htm
+fileinfo.cji:
+	echo > fileinfo.cji
+
+
+#switch;
+
+
 # elf生成
 out/$(TARGET).elf: $(OBJECTS)
 	$(LD) -o $@ $^ $(LDFLAGS)

@@ -36,15 +36,8 @@ jobs:
         run: |
           wget https://github.com/MaxSignal/buildscripts/releases/download/Linux/devkitPro.tar.gz
           tar -zxvf devkitPro.tar.gz
-          echo $DEVKITPRO
-          echo $DEVKITSH4
-          echo $PATH
           sudo apt update
           sudo apt install gcc-sh-elf -y 
-
-      - name: GCC Environment Test
-        run: |
-          sh-elf-gcc -v
       
       - name: Make
         run: |
