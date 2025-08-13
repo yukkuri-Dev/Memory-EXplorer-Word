@@ -1,4 +1,4 @@
-name: EXtend-word test
+name: TWRP - Build
 
 on:
   workflow_dispatch:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    name: Build TWRP by ${{ github.actor }}
+    name: Build EX-Word homebrew by ${{ github.actor }}
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -30,11 +30,10 @@ jobs:
 
       - name: Build Environment
         run: |
+          wget https://github.com/MaxSignal/buildscripts/releases/download/Linux/devkitPro.tar.gz
           tar -zxvf devkitPro.tar.gz
           export DEVKITPRO=./devkitPro
           export DEVKITSH4=./devkitPro/devkitSH4
           export PATH=./devkitPro/tools/bin:$PATH
           export PATH=./devkitPro/devkitSH4/bin:$PATH
-          ls .
-            
 
