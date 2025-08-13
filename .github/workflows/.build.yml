@@ -1,0 +1,38 @@
+name: TWRP - Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      MANIFEST_URL:
+        description: 'devkitPro'
+        required: true
+        default: 'https://github.com/MaxSignal/buildscripts/releases/download/Linux/devkitPro.tar.gz'
+
+jobs:
+  build:
+    name: Build TWRP by ${{ github.actor }}
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Clean-up
+        uses: rokibhasansagar/slimhub_actions@main
+
+      - name: Swap Space
+        uses: pierotofy/set-swap-space@master
+        with:
+          swap-size-gb: 10
+
+      - name: Build Environment
+        run: |
+          tar -zxvf devkitPro.tar.gz
+            export DEVKITPRO=./devkitPro
+            export DEVKITSH4=./devkitPro/devkitSH4
+            export PATH=./devkitPro/tools/bin:$PATH
+            export PATH=./devkitPro/devkitSH4/bin:$PATH
+
