@@ -39,7 +39,8 @@ jobs:
           echo $DEVKITPRO
           echo $DEVKITSH4
           echo $PATH
-          apt install gcc-sh-elf -y 
+          sudo apt update
+          sudo apt install gcc-sh-elf -y 
 
       - name: gcctest
         run: |
