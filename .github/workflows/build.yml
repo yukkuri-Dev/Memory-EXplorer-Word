@@ -42,7 +42,10 @@ jobs:
           sudo apt update
           sudo apt install gcc-sh-elf -y 
 
-      - name: gcctest
+      - name: GCC Environment Test
         run: |
           sh-elf-gcc -v
+      
+      - name: Make
+        run: Make 
 
