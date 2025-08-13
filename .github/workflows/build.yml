@@ -47,5 +47,5 @@ jobs:
           sh-elf-gcc -v
       
       - name: Make
-        run: Make 
+        run: make 
 
