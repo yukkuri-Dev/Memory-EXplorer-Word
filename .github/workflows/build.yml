@@ -32,10 +32,6 @@ jobs:
         run: |
           wget https://github.com/MaxSignal/buildscripts/releases/download/Linux/devkitPro.tar.gz
           tar -zxvf devkitPro.tar.gz
-          export DEVKITPRO=/home/runner/work/EXtend-Word/EXtend-Word/devkitPro
-          export DEVKITSH4=/home/runner/work/EXtend-Word/EXtend-Word/devkitPro/devkitSH4
-          export PATH=/home/runner/work/EXtend-Word/EXtend-Word/devkitPro/tools/bin:$PATH
-          export PATH=/home/runner/work/EXtend-Word/EXtend-Word/devkitPro/devkitSH4/bin:$PATH
           echo $DEVKITPRO
           echo $DEVKITSH4
           echo $PATH
@@ -47,5 +43,10 @@ jobs:
           sh-elf-gcc -v
       
       - name: Make
-        run: make 
+        run: |
+          export DEVKITPRO=/home/runner/work/EXtend-Word/EXtend-Word/devkitPro
+          export DEVKITSH4=/home/runner/work/EXtend-Word/EXtend-Word/devkitPro/devkitSH4
+          export PATH=/home/runner/work/EXtend-Word/EXtend-Word/devkitPro/tools/bin:$PATH
+          export PATH=/home/runner/work/EXtend-Word/EXtend-Word/devkitPro/devkitSH4/bin:$PATH
+          make 
 
