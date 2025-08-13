@@ -33,14 +33,10 @@ jobs:
           export DEVKITSH4=/home/runner/work/EXtend-Word/EXtend-Word/devkitPro/devkitSH4
           export PATH=/home/runner/work/EXtend-Word/EXtend-Word/devkitPro/tools/bin:$PATH
           export PATH=/home/runner/work/EXtend-Word/EXtend-Word/devkitPro/devkitSH4/bin:$PATH
-          echo [=========ls==========]
-          ls -a
-          echo [=========pwd=========]
-          pwd
-          echo [=====Environment=====]
           echo $DEVKITPRO
           echo $DEVKITSH4
           echo $PATH
+          apt install gcc-sh-elf -y 
 
       - name: gcctest
         run: |
