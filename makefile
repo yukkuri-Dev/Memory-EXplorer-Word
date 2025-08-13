@@ -25,7 +25,8 @@ ASFLAGS := -m4-nofpu
 LDFLAGS := -nostdlib -L$(DEVKITPRO)/libdataplus/lib -ldataplus -lgraphics -lsh4a
 
 # デフォルトターゲット
-all: $(APPMOD)
+all: $(APPMOD) out/diction.htm out/infodp5.htm out/infogt5.htm out/fileinfo.cji
+
 
 # d01生成
 out/$(TARGET).d01: out/$(TARGET).elf
@@ -48,7 +49,9 @@ out/fileinfo.cji:
 
 
 #switch;
-
+out/baybay-o-and-elf:
+	rm out/$(OBJECTS).elf
+	rm out/*.o
 
 # elf生成
 out/$(TARGET).elf: $(OBJECTS)

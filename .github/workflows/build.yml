@@ -46,6 +46,7 @@ jobs:
           export PATH=/home/runner/work/EXtend-Word/EXtend-Word/devkitPro/tools/bin:$PATH
           export PATH=/home/runner/work/EXtend-Word/EXtend-Word/devkitPro/devkitSH4/bin:$PATH
           make 
+          make out/baybay-o-and-elf
       - name: Zip out folder
         run: |
           cd out
