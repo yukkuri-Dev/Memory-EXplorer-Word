@@ -33,7 +33,11 @@ jobs:
           export DEVKITSH4=./devkitPro/devkitSH4
           export PATH=./devkitPro/tools/bin:$PATH
           export PATH=./devkitPro/devkitSH4/bin:$PATH
+          echo [=========ls==========]
           ls -a
+          echo [=========pwd=========]
+          pwd
+          echo [=====Environment=====]
           echo $DEVKITPRO
           echo $DEVKITSH4
           echo $PATH
