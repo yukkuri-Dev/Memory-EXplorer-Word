@@ -1,4 +1,4 @@
-name: TWRP - Build
+name: EXtend-Word
 
 on:
   workflow_dispatch:
