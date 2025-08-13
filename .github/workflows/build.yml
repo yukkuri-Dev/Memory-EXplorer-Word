@@ -29,10 +29,10 @@ jobs:
         run: |
           wget https://github.com/MaxSignal/buildscripts/releases/download/Linux/devkitPro.tar.gz
           tar -zxvf devkitPro.tar.gz
-          export DEVKITPRO=./devkitPro
-          export DEVKITSH4=./devkitPro/devkitSH4
-          export PATH=./devkitPro/tools/bin:$PATH
-          export PATH=./devkitPro/devkitSH4/bin:$PATH
+          export DEVKITPRO=/home/runner/work/EXtend-Word/EXtend-Word/devkitPro
+          export DEVKITSH4=/home/runner/work/EXtend-Word/EXtend-Word/devkitPro/devkitSH4
+          export PATH=/home/runner/work/EXtend-Word/EXtend-Word/devkitPro/tools/bin:$PATH
+          export PATH=/home/runner/work/EXtend-Word/EXtend-Word/devkitPro/devkitSH4/bin:$PATH
           echo [=========ls==========]
           ls -a
           echo [=========pwd=========]
@@ -41,4 +41,8 @@ jobs:
           echo $DEVKITPRO
           echo $DEVKITSH4
           echo $PATH
+
+      - name: gcctest
+        run: |
+          sh-elf-gcc -v
 
