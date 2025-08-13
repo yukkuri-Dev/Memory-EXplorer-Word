@@ -1,6 +1,9 @@
 name: EXtend-Word
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       MANIFEST_URL:
