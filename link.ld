@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ENTRY(_start) /* 必要ならエントリを定義 */
 
 SECTIONS
@@ -21,13 +20,3 @@ SECTIONS
         *(COMMON)
         . = ALIGN(4);
     }
-=======
-SECTIONS
-{
-    . = 0x100; /* 実行開始アドレスを適宜指定 */
-    .text : { *(.text) }
-    .rodata : { *(.rodata*) }
-    .data : { *(.data) }
-    .bss : { *(.bss) *(COMMON) }
->>>>>>> 34855f4abf67139a943887816741e5f42cda7356
-}
