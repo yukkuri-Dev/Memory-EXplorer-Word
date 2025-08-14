@@ -1,13 +1,17 @@
-ENTRY(_start) /* 必要ならエントリを定義 */
+ENTRY(_start)
 
 SECTIONS
 {
-    . = 0x80; /* TEXTの開始アドレス。exword環境だと0x80スタートが多い */
+    . = 0x80;
 
     .text : {
-        *(.text*)       /* すべての.textを結合 */
-        *(.rodata*)     /* 読み取り専用データもTEXTに入れる場合 */
-        . = ALIGN(4);   /* アラインメント調整 */
+        *(.text*)
+        . = ALIGN(4);
+    }
+
+    .rodata : {
+        *(.rodata*)
+        . = ALIGN(4);
     }
 
     .data : {
