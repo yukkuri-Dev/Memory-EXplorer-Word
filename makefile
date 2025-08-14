@@ -58,9 +58,6 @@ out/baybay-o-and-elf:
 
 # elf生成
 out/$(TARGET).elf: $(OBJECTS)
-	@echo "--- Inspecting symbols in $(OBJECTS) ---"
-	@sh-elf-nm $(OBJECTS)
-	@echo "--- End of symbol inspection ---"
 	$(LD) -o $@ $^ $(LDFLAGS)
 
 # コンパイルルール

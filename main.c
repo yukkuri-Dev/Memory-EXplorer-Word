@@ -35,7 +35,7 @@ void __start(void);
 
 // Create a global symbol alias named '_start' for our C function '__start'.
 // This ensures the linker can find the entry point specified in link.ld.
-__asm__(".global _start\n.set _start, __start");
+__asm__(".global _start\n.set _start, ___start");
 
 void __start(void) {
     // Set stack pointer using inline assembly.
