@@ -41,11 +41,11 @@ jobs:
       
       - name: Make
         run: |
-          export DEVKITPRO=/home/runner/work/EXtend-Word/EXtend-Word/devkitPro
-          export DEVKITSH4=/home/runner/work/EXtend-Word/EXtend-Word/devkitPro/devkitSH4
-          export PATH=/home/runner/work/EXtend-Word/EXtend-Word/devkitPro/tools/bin:$PATH
-          export PATH=/home/runner/work/EXtend-Word/EXtend-Word/devkitPro/devkitSH4/bin:$PATH
-          make 
+          export DEVKITPRO="$(pwd)/devkitPro"
+          export DEVKITSH4="$DEVKITPRO/devkitSH4"
+          export PATH="$DEVKITPRO/tools/bin:$DEVKITSH4/bin:$PATH"
+
+          make
           make out/baybay-o-and-elf
       - name: Zip out folder
         run: |
@@ -66,4 +66,3 @@ jobs:
           body: |
             ## EXtend-Word Build
             Most recent commit: ${{ env.COMMIT_ID }}
-
