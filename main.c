@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
+
 
 
 
@@ -22,11 +22,10 @@ void blink_screen(int times, int interval_ms) {
     for (int i = 0; i < times; ++i) {
         for (int j = 0; j < total_pixels; ++j) vram[j] = 0xFFFF;
         lcdc_copy_vram();
-        usleep(interval_ms * 1000);
-
+		
         for (int j = 0; j < total_pixels; ++j) vram[j] = 0x0000;
         lcdc_copy_vram();
-        usleep(interval_ms * 1000);
+
     }
 }
 
