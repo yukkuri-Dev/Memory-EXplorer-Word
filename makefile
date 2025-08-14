@@ -21,7 +21,7 @@ SFILES :=
 OBJECTS := $(patsubst %.c, out/%.o, $(CFILES)) $(patsubst %.s, out/%.o, $(SFILES))
 
 # ビルドフラグ
-CFLAGS  := -fno-builtin -I$(DEVKITPRO)/libdataplus/include -I$(SOURCEDIR) -I$(SOURCEDIR)/libc/include -O3 $(CC_OPTS)
+CFLAGS  := -O2 -fno-builtin -I$(DEVKITPRO)/libdataplus/include -ffunction-sections -fdata-sections
 CC_OPTS := 
 ASFLAGS := -m4-nofpu
 LDFLAGS := -nostdlib -T ./link.ld -L$(DEVKITPRO)/libdataplus/lib -ldataplus -lgraphics -lsh4a 
