@@ -15,7 +15,7 @@ APPMOD   := out/$(TARGET).d01
 
 # ソースファイル
 CFILES := main.c
-SFILES := 
+SFILES := start.s 
 
 # 出力ファイル
 OBJECTS := $(patsubst %.c, out/%.o, $(CFILES)) $(patsubst %.s, out/%.o, $(SFILES))
