@@ -15,7 +15,7 @@ APPMOD   := out/$(TARGET).d01
 
 # ソースファイル
 CFILES := main.c
-SFILES :=  
+SFILES := start.s  
 
 # 出力ファイル
 OBJECTS := $(patsubst %.c, out/%.o, $(CFILES)) $(patsubst %.s, out/%.o, $(SFILES))
@@ -58,7 +58,6 @@ out/baybay-o-and-elf:
 
 # elf生成
 out/$(TARGET).elf: $(OBJECTS)
-	$(CC) -o $@ $^ $(LDFLAGS)
 
 # コンパイルルール
 out/%.o: %.c

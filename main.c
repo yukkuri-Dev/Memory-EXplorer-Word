@@ -25,13 +25,7 @@ void blink_screen(int times, int interval_ms,int selector) {
     }
 }
 
-void main(void);
 
-// _start is the entry point. It just calls main.
-// The C compiler (gcc) used as the linker will handle all necessary setup.
-void _start(void) {
-    main();
-}
 
 void main(void) {
     while(1) {
