@@ -7,9 +7,10 @@ endif
 include $(DEVKITSH4)/exword_rules
 
 # アプリ情報
-TARGET   := vramfill
-APPID    := HELLO
-APPTITLE := VRAM Filler
+TARGET   := mdump
+# AppIDは五文字でかいて
+APPID    := MDUMP
+APPTITLE := MemoryDumper4DP
 APPMOD   := out/$(TARGET).d01
 
 # ソースファイル
