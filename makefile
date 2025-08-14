@@ -23,7 +23,7 @@ OBJECTS := $(patsubst %.c, out/%.o, $(CFILES)) $(patsubst %.s, out/%.o, $(SFILES
 # ビルドフラグ
 CFLAGS  := -O2 -fno-builtin -I$(DEVKITPRO)/libdataplus/include
 ASFLAGS := -m4-nofpu
-LDFLAGS := -nostdlib -L$(DEVKITPRO)/libdataplus/lib -ldataplus -lgraphics -lsh4a
+LDFLAGS := -nostdlib -L$(DEVKITPRO)/libdataplus/lib -ldataplus -lgraphics -lsh4a link.ld
 
 # デフォルトターゲット
 all: $(APPMOD) out/diction.htm out/infodp5.htm out/infogt5.htm out/fileinfo.cji
