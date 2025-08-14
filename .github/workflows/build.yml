@@ -27,11 +27,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
-      - name: Swap Space
-        uses: pierotofy/set-swap-space@master
-        with:
-          swap-size-gb: 10
-
       - name: Build Environment
         run: |
           wget https://github.com/MaxSignal/buildscripts/releases/download/Linux/devkitPro.tar.gz
