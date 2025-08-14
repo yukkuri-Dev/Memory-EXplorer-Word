@@ -20,10 +20,10 @@ void blink_screen(int times, int interval_ms,int selector) {
     int total_pixels = width * height;
 
     for (int i = 0; i < times; ++i) {
-		if (selector=0);
+		if (selector==0);
 			for (int j = 0; j < total_pixels; ++j) vram[j] = 0xFFFF;
         	lcdc_copy_vram();
-		if (selector=1);
+		if (selector==1);
         	for (int j = 0; j < total_pixels; ++j) vram[j] = 0x0000;
         	lcdc_copy_vram();
     }
