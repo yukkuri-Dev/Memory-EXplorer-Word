@@ -31,8 +31,13 @@ void blink_screen(int times, int interval_ms,int selector) {
 
 
 void main(void);
+void __start(void);
 
-void _start(void) {
+// Create a global symbol alias named '_start' for our C function '__start'.
+// This ensures the linker can find the entry point specified in link.ld.
+__asm__(".global _start\n.set _start, __start");
+
+void __start(void) {
     // Set stack pointer using inline assembly.
     __asm__ volatile (
         "mov.l .L_stack_addr, r15\n\t"
@@ -48,6 +53,7 @@ void _start(void) {
     // If main returns, hang
     while(1);
 }
+
 
 void main(void) {
     while(1) {
