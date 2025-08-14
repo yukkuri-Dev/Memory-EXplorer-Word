@@ -30,11 +30,30 @@ void blink_screen(int times, int interval_ms,int selector) {
 }
 
 
+void main(void);
+
 void _start(void) {
-    	while(1) {
+    // Set stack pointer using inline assembly.
+    __asm__ volatile (
+        "mov.l .L_stack_addr, r15\n\t"
+        "bra .L_after_stack_init\n\t"
+        ".align 2\n\t"
+        ".L_stack_addr: .long 0x8000\n\t"
+        ".L_after_stack_init:"
+    );
+
+    // Call main
+    main();
+
+    // If main returns, hang
+    while(1);
+}
+
+void main(void) {
+    while(1) {
 		if (get_key_pressed(KEY_POWER))
 			blink_screen(10,200,0);
 		if (get_key_pressed(KEY_ENTER))
 			blink_screen(10,200,1);
-		}
+	}
 }
