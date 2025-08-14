@@ -13,7 +13,7 @@ on:
 
 jobs:
   build:
-    name: Build ${GITHUB_REPOSITORY##*/} by ${{ github.actor }}
+    name: Build ${{ github.repository }} by ${{ github.actor }}
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
