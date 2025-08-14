@@ -24,7 +24,6 @@ OBJECTS := $(patsubst %.c, out/%.o, $(CFILES)) $(patsubst %.s, out/%.o, $(SFILES
 CFLAGS  := -O2 -fno-builtin -I$(DEVKITPRO)/libdataplus/include -ffunction-sections -fdata-sections
 CC_OPTS := 
 ASFLAGS := -m4-nofpu
-AS      := sh-elf-as
 LDFLAGS := -nostdlib -T ./link.ld -L$(DEVKITPRO)/libdataplus/lib -ldataplus -lgraphics -lsh4a 
 
 # デフォルトターゲット
@@ -68,7 +67,7 @@ out/%.o: %.c
 
 out/%.o: %.s
 	@mkdir -p out
-	$(AS) $(ASFLAGS) -o $@ $<
+	$(CC) $(CFLAGS) $(ASFLAGS) -c -o $@ $<
 
 # クリーン
 clean:
