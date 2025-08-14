@@ -30,7 +30,7 @@ void blink_screen(int times, int interval_ms,int selector) {
 }
 
 
-void main(void) {
+void _start(void) {
     	while(1) {
 		if (get_key_pressed(KEY_POWER))
 			blink_screen(10,200,0);
