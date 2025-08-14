@@ -13,7 +13,7 @@ on:
 
 jobs:
   build:
-    name: Build EX-Word homebrew by ${{ github.actor }}
+    name: Build ${GITHUB_REPOSITORY##*/} by ${{ github.actor }}
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -61,8 +61,9 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: out_build.zip
-          name: EXtend-Word Build  // ${{ env.BUILD_DATE }}
+          name: ${{ github.repository }} Builder  // ${{ env.BUILD_DATE }}
           tag_name: ${{ github.run_id }}
           body: |
-            ## EXtend-Word Build
+            ## ${{ github.repository }} Builder
+            # Project Name: ${{ github.repository }}
             Most recent commit: ${{ env.COMMIT_ID }}
