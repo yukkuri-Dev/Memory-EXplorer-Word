@@ -58,7 +58,7 @@ out/baybay-o-and-elf:
 
 # elf生成
 out/$(TARGET).elf: $(OBJECTS)
-	$(LD) -o $@ $^ $(LDFLAGS)
+	$(CC) -o $@ $^ $(LDFLAGS)
 
 # コンパイルルール
 out/%.o: %.c

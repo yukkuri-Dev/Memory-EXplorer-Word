@@ -5,10 +5,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Define stack pointer address in a C variable.
-// The compiler will place this in the .rodata section.
-const unsigned int stack_address = 0x8000;
-
 extern void *lcdc_get_vram_address(void);
 extern void lcdc_get_dimensions(uint16_t *width, uint16_t *height);
 extern void lcdc_copy_vram(void);
@@ -30,24 +26,11 @@ void blink_screen(int times, int interval_ms,int selector) {
 }
 
 void main(void);
-void __start(void);
 
-// Create a global symbol alias named '_start' for our C function '__start'.
-__asm__(".global _start\n.set _start, ___start");
-
-void __start(void) {
-    // Set stack pointer r15 to the value of stack_address.
-    // %0 will be replaced by the address of the 'stack_address' variable.
-    // We load this address into r0, then load the value at that address into r15.
-    __asm__ volatile (
-        "mov.l %0, r0\n\t"
-        "mov.l @r0, r15"
-        : : "r" (&stack_address) : "r0"
-    );
-
+// _start is the entry point. It just calls main.
+// The C compiler (gcc) used as the linker will handle all necessary setup.
+void _start(void) {
     main();
-
-    while(1);
 }
 
 void main(void) {
