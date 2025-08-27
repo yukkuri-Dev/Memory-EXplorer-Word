@@ -27,14 +27,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
-      - name: Build Environment
+      - name: Make a Build Environment
         run: |
           wget https://github.com/MaxSignal/buildscripts/releases/download/Linux/devkitPro.tar.gz
           tar -zxvf devkitPro.tar.gz
           sudo apt update
           sudo apt install gcc-sh-elf -y 
       
-      - name: Make
+      - name: Make Project
         run: |
           export DEVKITPRO="$(pwd)/devkitPro"
           export DEVKITSH4="$DEVKITPRO/devkitSH4"
