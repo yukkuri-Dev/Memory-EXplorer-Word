@@ -30,30 +30,7 @@ void main(void) {
 		if (get_key_pressed(KEY_POWER))
 			blink_screen(10,200,0);
 		if (get_key_pressed(KEY_ENTER))
-			software_reset();
+			blink_screen(10,100,0);
 			
 	}
-}
-
-void software_reset(void) {
-    // EXPEVT: Manual Reset コード
-    *(volatile unsigned int *)0xFF000024 = 0x00000020;
-
-    // 割り込みベクタベースリセット（VBR）
-    __asm__ volatile (
-        "mov.l  #0x00000000, r0\n\t"
-        "ldc    r0, vbr\n\t"
-    );
-
-    // ステータスレジスタ設定 (例: MD=1, RB=1, BL=1, IMASK=1111)
-    __asm__ volatile (
-        "mov.l  #0x500000F0, r0\n\t"  // 適切なSR初期値
-        "ldc    r0, sr\n\t"
-    );
-
-    // プログラムカウンタをリセットベクタへジャンプ
-    void (*reset_vector)(void) = (void *)0xA0000000;
-    reset_vector();
-
-    while (1); // 念のためループ（戻ってくるはずがない）
 }
