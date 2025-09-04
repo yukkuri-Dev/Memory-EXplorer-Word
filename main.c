@@ -1,6 +1,4 @@
 #include <syscalls/syscalls.h>
-#include <stdlib.h>
-#include <string.h>
 
 int main(void) {
     unsigned char data[26] = {
@@ -10,29 +8,20 @@ int main(void) {
         0x53,0x21
     };
 
-    // 保存先パスを自分で作る
-    char *filename = malloc(128);
-    if (!filename) return 1;
+    // 固定バッファに直接パスを書き込む
+    char filename[64] = "\\\\drv0\\poop.txt";
 
-    // 例: drv0 直下に保存
-    strcpy(filename, "\\\\drv0\\poop.txt");
-
-    // ファイル作成 (WRITE モード)
+    // ファイル作成
     int fd = sys_create(filename, FILE_WR);
-    if (fd < 0) {
-        free(filename);
-        return 1;
-    }
+    if (fd < 0) return 1;
 
     // 書き込み
     sys_write(fd, data, sizeof(data));
 
-    // ファイルを閉じる
+    // 閉じる
     sys_close(fd);
 
-    free(filename);
-
-    while(1) {} // 終了しない
+    while(1) {}
 
     return 0;
 }
