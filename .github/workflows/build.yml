@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - RW-test
   workflow_dispatch:
     inputs:
       MANIFEST_URL:
