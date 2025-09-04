@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <rc/rc.h>
 
 static char *media[2] = {
 	"\\\\drv0\\",
@@ -34,7 +35,7 @@ void main(void) {
 
 
 
-	sramfile = "poop.txt";
+	sramfile = "test.txt";
 
 	FILE *f = fopen(sramfile,"wb");
 	size_t written = fwrite(data,1,sizeof(data),f);
