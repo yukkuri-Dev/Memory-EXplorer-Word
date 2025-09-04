@@ -19,10 +19,10 @@ void main(void) {
 	sys_dict_info(&drv,id);
 	buf = malloc(50);
 	sprintf(buf, "%s:%s%s\\_USER\\", media[drv], media[drv], id);
-	rc_setvar("rcpath", 1,&buf);
+	rc_setvar("rcpath", 1,buf);
 	sprintf(buf, "%sROMS\\", media[drv]);
-	rc_setvar("savedir", 1, &buf);
-	rc_setvar("romdir", 1, &buf);
+	rc_setvar("savedir", 1, buf);
+	rc_setvar("romdir", 1, buf);
 
     unsigned char data[26] = {
         0x48, 0x45, 0x4C, 0x4C, 0x4F, 0x20, 0x57, 0x4F,
@@ -38,7 +38,7 @@ void main(void) {
 
 	FILE *f = fopen(sramfile,"wb");
 	size_t written = fwrite(data,1,sizeof(data),f);
-	fclose(sramfile);
+	fclose(f);
     while(1) {
 	}
 }
