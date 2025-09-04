@@ -15,15 +15,16 @@ APPMOD   := out/$(TARGET).d01
 
 # ソースファイル
 CFILES := main.c
-SFILES :=
+SFILES :=  
 
 # 出力ファイル
 OBJECTS := $(patsubst %.c, out/%.o, $(CFILES)) $(patsubst %.s, out/%.o, $(SFILES))
 
 # ビルドフラグ
-CFLAGS  := -O2 -fno-builtin -I$(DEVKITPRO)/libdataplus/include
+CFLAGS  := -O2 -fno-builtin -I$(DEVKITPRO)/libdataplus/include -ffunction-sections -fdata-sections
+CC_OPTS := 
 ASFLAGS := -m4-nofpu
-LDFLAGS := -nostdlib -L$(DEVKITPRO)/libdataplus/lib -ldataplus -lgraphics -lsh4a
+LDFLAGS := -nostdlib -T ./link.ld -L$(DEVKITPRO)/libdataplus/lib -ldataplus -lgraphics -lsh4a 
 
 # デフォルトターゲット
 all: $(APPMOD) out/diction.htm out/infodp5.htm out/infogt5.htm out/fileinfo.cji
@@ -57,7 +58,6 @@ out/baybay-o-and-elf:
 
 # elf生成
 out/$(TARGET).elf: $(OBJECTS)
-	$(LD) -o $@ $^ $(LDFLAGS)
 
 # コンパイルルール
 out/%.o: %.c
@@ -66,7 +66,7 @@ out/%.o: %.c
 
 out/%.o: %.s
 	@mkdir -p out
-	$(AS) $(ASFLAGS) -o $@ $<
+	$(CC) $(CFLAGS) $(ASFLAGS) -c -o $@ $<
 
 # クリーン
 clean:
