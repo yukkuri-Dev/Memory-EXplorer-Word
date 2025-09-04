@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <rc/rc.h>
+//#include <rc/rc.h>
 
 static char *media[2] = {
 	"\\\\drv0\\",
