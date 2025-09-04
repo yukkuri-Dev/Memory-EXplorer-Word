@@ -5,32 +5,41 @@
 #include <stdlib.h>
 #include <string.h>
 
-extern void *lcdc_get_vram_address(void);
-extern void lcdc_get_dimensions(uint16_t *width, uint16_t *height);
-extern void lcdc_copy_vram(void);
-
-void blink_screen(int times, int interval_ms,int selector) {
-    uint16_t width, height;
-    uint16_t *vram = (uint16_t *)lcdc_get_vram_address();
-    lcdc_get_dimensions(&width, &height);
-    int total_pixels = width * height;
-
-    for (int i = 0; i < times; ++i) {
-		if (selector==0);
-			for (int j = 0; j < total_pixels; ++j) vram[j] = 0xFFFF;
-        	lcdc_copy_vram();
-		if (selector==1);
-        	for (int j = 0; j < total_pixels; ++j) vram[j] = 0x0000;
-        	lcdc_copy_vram();
-    }
-}
+static char *media[2] = {
+	"\\\\drv0\\",
+	"\\\\crd0\\"
+};
 
 void main(void) {
+	static char *sramfile = null;
+
+	char *buf;
+	char id[10];
+	unsigned long drv;
+	sys_dict_info(&drv,id);
+	buf = malloc(50);
+	sprintf(buf, "%s:%s%s\\_USER\\", media[drv], media[drv], id);
+	rc_setvar("rcpath", 1,&buf);
+	sprintf(buf, "%sROMS\\", media[drv]);
+	rc_setvar("savedir", 1, &buf);
+	rc_setvar("romdir", 1, &buf);
+
+    unsigned char data[26] = {
+        0x48, 0x45, 0x4C, 0x4C, 0x4F, 0x20, 0x57, 0x4F,
+        0x52, 0x4C, 0x44, 0x0D, 0x0A, 0x50, 0x4F, 0x43,
+        0x20, 0x49, 0x53, 0x20, 0x57, 0x4F, 0x52, 0x4B,
+        0x53, 0x21
+    };
+
+
+
+
+	sramfile = poop.txt;
+
+	FILE * test;
+	f = fopen(sramfile,"wb");
+	size_t written = fwrite(data,1,sizeof(data),sramfile);
+	fclose(sramfile);
     while(1) {
-		if (get_key_pressed(KEY_POWER))
-			blink_screen(10,200,0);
-		if (get_key_pressed(KEY_ENTER))
-			blink_screen(10,100,0);
-			
 	}
 }
