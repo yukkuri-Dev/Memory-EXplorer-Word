@@ -11,7 +11,7 @@ static char *media[2] = {
 };
 
 void main(void) {
-	static char *sramfile = null;
+	static char *sramfile = NULL;
 
 	char *buf;
 	char id[10];
@@ -34,11 +34,10 @@ void main(void) {
 
 
 
-	sramfile = poop.txt;
+	sramfile = "poop.txt";
 
-	FILE * test;
-	f = fopen(sramfile,"wb");
-	size_t written = fwrite(data,1,sizeof(data),sramfile);
+	FILE *f = fopen(sramfile,"wb");
+	size_t written = fwrite(data,1,sizeof(data),f);
 	fclose(sramfile);
     while(1) {
 	}
